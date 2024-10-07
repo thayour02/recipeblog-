@@ -8,7 +8,7 @@ export const GlobalContext = createContext(null)
 export default function GlobalState({children}){
 
     // searchParam GlobalContext
-const [searchParam, setSearchParam] =useState("")
+const [searchParam, setSearchParam] = useState("")
 
 // Loading data GlobalContext
 const [loading, setLoading]= useState(false)
@@ -23,22 +23,36 @@ const [favoritesList, setFavoritesList] = useState([])
 //to navigate to homePage from any page
 const navigate = useNavigate()
 
+// useEffect(()=>{
+//   const   fetchRecipe=async()=>{
+//     try {
+//         const recipe = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipe`)
+//         const data = await recipe.json()
+//         console.log(data)
+//     } catch (error) {
+        
+//     }
+
+// }
+
+//     fetchRecipe()
+// },[])
+
 // search function and fetch data
 async function handleSubmit(e){
     e.preventDefault()
     setLoading(true)
     try {
         const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`)
-        
         const data = await res.json()
-
         if(data?.data?.recipes){
             setRecipe(data?.data?.recipes)
             setLoading(false)
             setSearchParam("")
             navigate('/')
+        }else if(data?.results === 0){
+            alert('recipe not found')
         }
-
     } catch (error) {
         setLoading(false)
         throw new Error(error)

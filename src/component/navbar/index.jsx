@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <nav className="flex justify-between items-center py-8 container mx-auto flex-col lg:flex-row gap-5 lg:gap-0" >
             <h2 className='text-2xl font-semibold'>
-                <NavLink to={'/Food Recipe'} className="text-black hover:text-cyan-700 duration-300 cursor-pointer">Food Recipe</NavLink>
+                <NavLink to={'/'} className="text-black hover:text-cyan-700 duration-300 cursor-pointer">Food Recipe</NavLink>
             </h2>
 
             <form onSubmit={handleSubmit}>

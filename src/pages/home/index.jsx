@@ -13,7 +13,7 @@ export default function Home(){
                 recipe && recipe.length > 0 ? 
                     recipe.map(Item => <RecipeItem Item={Item}/>)
                 :<div>
-                    <p style={{marginLeft:"300px"}} className="lg:text-4xl text-center font-bold">Recipe Not Found Please Search Something Else</p>
+                    <p  className="lg:text-5xl  md:px-40 px-10 mt-20 font-bold">Please Search Your Recipe</p>
                 </div>
             }
     </div>
